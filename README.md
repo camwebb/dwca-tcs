@@ -12,7 +12,7 @@ This repo contains files for defining a DwCA extension for the
 `TaxonRelationshipAssertion` element of TCS. Note than this element is
 just part of the full TCS schame.
 
-# Files
+## Files
 
  * `TaxonConceptRelationship` DwCA Extension: `tcrel.xml` (During
    sandbox phase, to be placed at:
@@ -23,3 +23,5 @@ just part of the full TCS schame.
  * Thesaurus/Vocab definitions: `tcreltypes.xml` (uring sandbox
    phase, to be placed at:
    <http://rs.gbif.org/sandbox/vocabulary/tcs/tcreltypes.xml>)
+
+XSD, RNG and RNC Schema files for the `extensions` and `thesaurus` XML structures are in `schema/`.
