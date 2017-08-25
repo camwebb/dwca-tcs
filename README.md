@@ -10,7 +10,7 @@ inter-taxon-concept relationships in a DwCA.
 
 This repo contains files for defining a DwCA extension for the
 `TaxonRelationshipAssertion` element of TCS. Note than this element is
-just part of the full TCS schame.
+just part of the full TCS schema.
 
 ## Files
 
