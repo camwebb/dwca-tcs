@@ -1,0 +1,28 @@
+default namespace = "http://rs.gbif.org/thesaurus/"
+namespace dc = "http://purl.org/dc/terms/"
+namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+start =
+   element thesaurus {
+      attribute dc:URI { xsd:anyURI },
+      attribute dc:description { text },
+      attribute dc:issued { xsd:date },
+      attribute dc:relation { xsd:anyURI }?,
+      attribute dc:title { text },
+      attribute xsi:schemaLocation { text },
+      element concept {
+         attribute dc:URI { xsd:anyURI },
+         attribute dc:description { text },
+         attribute dc:identifier { xsd:NCName },
+         attribute dc:relation { xsd:anyURI }?,
+         element preferred {
+            element term {
+               attribute dc:source { text },
+               attribute dc:title { text },
+               attribute xml:lang { xsd:NCName }
+            }
+         },
+         element alternative { empty }?
+      }+
+   }
+   

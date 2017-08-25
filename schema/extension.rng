@@ -1,0 +1,154 @@
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0" xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0" xmlns:ext="http://rs.gbif.org/extension/" xmlns:dc="http://purl.org/dc/terms/" ns="http://rs.gbif.org/extension/" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+<rng:include href="dc.rng" ns="http://purl.org/dc/terms/"/>
+<rng:start combine="choice">
+<rng:ref name="extension"/>
+</rng:start>
+<rng:define name="extension">
+<rng:element name="extension">
+
+
+<rng:oneOrMore>
+<rng:element name="property">
+
+<rng:attribute name="name">
+<rng:data type="NCName">
+<a:documentation>
+
+lowerCamelCase, whitespace less simple name for the property that can for example be used to generate XML tags or json attribute names
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:attribute name="namespace">
+<rng:data type="anyURI">
+<a:documentation>
+The namespace this extension belongs to
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:attribute name="qualName">
+<rng:data type="anyURI">
+<a:documentation>
+
+The fully qualified name combining the simple name with the namespace.
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:optional>
+<rng:attribute name="group">
+<rng:data type="string">
+<a:documentation>
+
+Optional group name to organise properties in extensions in case there are many
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+</rng:optional>
+<rng:optional>
+<rng:attribute xmlns:ns_1="http://relaxng.org/ns/compatibility/annotations/1.0" name="columnLength" ns_1:defaultValue="128">
+<rng:data type="positiveInteger"/>
+</rng:attribute>
+</rng:optional>
+<rng:optional>
+<rng:attribute xmlns:ns_1="http://relaxng.org/ns/compatibility/annotations/1.0" name="type" ns_1:defaultValue="string">
+<rng:ref name="dataType"/>
+<a:documentation>
+
+The data type for the property. Defaults to a string.
+
+</a:documentation>
+</rng:attribute>
+</rng:optional>
+<rng:optional>
+<rng:attribute name="examples">
+<rng:data type="string">
+<a:documentation>
+
+Example content for the property. If multiple are given delimited by a semicolon
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+</rng:optional>
+<rng:ref name="relation"/>
+<rng:ref name="subject"/>
+<rng:ref name="description"/>
+<rng:optional>
+<rng:attribute name="thesaurus">
+<rng:data type="anyURI">
+<a:documentation>
+
+A uri identifying a vocabulary to be used for property values
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+</rng:optional>
+<rng:optional>
+<rng:attribute xmlns:ns_1="http://relaxng.org/ns/compatibility/annotations/1.0" name="required" ns_1:defaultValue="false">
+<rng:data type="boolean"/>
+</rng:attribute>
+</rng:optional>
+
+</rng:element>
+</rng:oneOrMore>
+
+<rng:ref name="title"/>
+<a:documentation>
+
+The human readable english title for the entire extension
+
+</a:documentation>
+
+<rng:attribute name="name">
+<rng:data type="NCName">
+<a:documentation>
+
+Capital, whitespace less simple name for the extension that can for example be used to generate XML tags
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:attribute name="namespace">
+<rng:data type="anyURI">
+<a:documentation>
+The namespace this extension belongs to
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:attribute name="rowType">
+<rng:data type="anyURI">
+<a:documentation>
+
+The rowType is the qualified name when combined with the namespace. Double or missing slashes are removed/added when name + namespace is combined.
+
+</a:documentation>
+</rng:data>
+</rng:attribute>
+<rng:ref name="issued"/>
+<a:documentation>
+
+The date that the extension (version) was officially released.
+
+</a:documentation>
+
+<rng:ref name="description"/>
+<rng:ref name="relation"/>
+<rng:ref name="subject"/>
+
+</rng:element>
+</rng:define>
+<!--  Enumeration of supported data types  -->
+<rng:define name="dataType">
+<rng:choice>
+<rng:value>string</rng:value>
+<rng:value>boolean</rng:value>
+<rng:value>integer</rng:value>
+<rng:value>decimal</rng:value>
+<rng:value>date</rng:value>
+<rng:value>uri</rng:value>
+</rng:choice>
+</rng:define>
+</rng:grammar>

@@ -1,0 +1,221 @@
+namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace dc = "http://purl.org/dc/terms/"
+default namespace ext = "http://rs.gbif.org/extension/"
+namespace ns_1 = "http://relaxng.org/ns/compatibility/annotations/1.0"
+namespace rng = "http://relaxng.org/ns/structure/1.0"
+namespace xsi = "http://www.w3.org/2001/XMLSchema-instance"
+
+# include "dc.rnc" inherit = dc  # included below
+
+start = extension
+
+extension =
+   element extension {
+      attribute xsi:schemaLocation { text },
+      dc-title,
+      #>> a:documentation [
+      #   "\x{a}" ~
+      #   "\x{a}" ~
+      #   "The human readable english title for the entire extension\x{a}" ~
+      #   "\x{a}"
+      #],
+      attribute name {
+         
+         ## 
+         ## 
+         ## Capital, whitespace less simple name for the extension that can for example be used to generate XML tags
+         ## 
+         ##
+         xsd:NCName
+      },
+      attribute namespace {
+      
+         ## 
+         ## The namespace this extension belongs to
+         ##
+         xsd:anyURI
+      },
+      attribute rowType {
+      
+         ## 
+         ## 
+         ## The rowType is the qualified name when combined with the namespace. Double or missing slashes are removed/added when name + namespace is combined.
+         ## 
+         ##
+         xsd:anyURI
+      },
+      dc-issued,
+      #>> a:documentation [
+      #   "\x{a}" ~
+      #   "\x{a}" ~
+      #   "The date that the extension (version) was officially released.\x{a}" ~
+      #         "\x{a}"
+      #],
+      dc-description,
+      dc-relation,
+      dc-subject?,
+
+      element property {
+         attribute name {
+        
+            ## 
+            ## 
+            ## lowerCamelCase, whitespace less simple name for the property that can for example be used to generate XML tags or json attribute names
+            ## 
+            ##
+            xsd:NCName
+         },
+         attribute namespace {
+        
+            ## 
+            ## The namespace this extension belongs to
+            ##
+            xsd:anyURI
+         },
+         attribute qualName {
+        
+            ## 
+            ## 
+            ## The fully qualified name combining the simple name with the namespace.
+            ## 
+            ##
+            xsd:anyURI
+         },
+         attribute group {
+            
+            ## 
+            ## 
+            ## Optional group name to organise properties in extensions in case there are many
+            ## 
+            ##
+            xsd:string
+         }?,
+         # [ ns_1:defaultValue = "128" ]
+         attribute columnLength { xsd:positiveInteger }?,
+         # [ ns_1:defaultValue = "string" ]
+         attribute type {
+            # Enumeration of supported data types
+            "string" | "boolean" | "integer" | "decimal" | "date" | "uri"
+            #>> a:documentation [
+            #   "\x{a}" ~
+            #   "\x{a}" ~
+            #   "The data type for the property. Defaults to a string.\x{a}" ~
+            #   "\x{a}"
+            #]
+         }?,
+         attribute examples {
+            
+            ## 
+            ## 
+            ## Example content for the property. If multiple are given delimited by a semicolon
+            ## 
+            ##
+            xsd:string
+         }?,
+         dc-relation?,
+         dc-subject?,
+         dc-description,
+         attribute thesaurus {
+        
+            ## 
+            ## 
+            ## A uri identifying a vocabulary to be used for property values
+            ## 
+            ##
+            xsd:anyURI
+         }?,
+         # [ ns_1:defaultValue = "false" ]
+         attribute required { xsd:boolean }?
+      }+
+   }
+
+# -----------------------------------
+# In place DC
+
+# default namespace = "http://purl.org/dc/elements/1.1/"
+# namespace a = "http://relaxng.org/ns/compatibility/annotations/1.0"
+
+# Dublin core
+
+# RNG hand created by Sebastian Rahtz 2007-03-31
+dc-subject =
+  ## Dublin Core Subject
+  attribute dc:subject { dc-model-attributes, text }
+
+dc-title =
+  ## Dublin Core Title
+  attribute dc:title { dc-model-attributes, text }
+
+dc-identifier =
+  ## Dublin Core Identifier
+  attribute dc:identifier { dc-model-attributes, text }
+
+dc-language =
+  ## Dublin Core Language
+  attribute dc:language { dc-model-attributes, text }
+
+dc-type =
+  ## Dublin Core Type
+  attribute dc:type { dc-model-attributes, text }
+
+dc-rights =
+  ## Dublin Core Rights
+  attribute dc:rights { dc-model-attributes, text }
+
+dc-date =
+  ## Dublin Core Date
+  attribute dc:date { dc-model-attributes, text }
+
+dc-issued =
+   attribute dc:issued { dc-model-attributes, text }
+
+dc-contributor =
+  ## Dublin Core Contributor
+  attribute dc:contributor { dc-model-attributes, text }
+
+dc-creator =
+  ## Dublin Core Creator
+  attribute dc:creator { dc-model-attributes, text }
+
+dc-publisher =
+  ## Dublin Core Publisher
+  attribute dc:publisher { dc-model-attributes, text }
+
+dc-relation =
+  ## Dublin Core Relation
+  attribute dc:relation { dc-model-attributes, text }
+
+dc-format =
+  ## Dublin Core Format
+  attribute dc:format { dc-model-attributes, text }
+
+dc-coverage =
+  ## Dublin Core Coverage
+  attribute dc:coverage { dc-model-attributes, text }
+
+dc-source =
+  ## Dublin Core Source
+  attribute dc:source { dc-model-attributes, text }
+
+dc-description =
+   ## Dublin Core Description
+attribute dc:description { dc-model-attributes, text }
+
+dc-model-attributes = attribute xml:lang { xsd:language }?
+
+#start =
+#  dc-subject
+#  | dc-title
+#  | dc-identifier
+#  | dc-language
+#  | dc-type
+#  | dc-rights
+#  | dc-date
+#  | dc-contributor
+#  | dc-creator
+#  | dc-publisher
+#  | dc-relation
+#  | dc-format
+#  | dc-coverage
+#  | dc-source
+#  | dc-description
