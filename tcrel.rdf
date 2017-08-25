@@ -7,7 +7,10 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#">
-        <rdfs:comment>Terms used to describe the relationship between taxon concepts. Borrows structure and terms from the TDWG Taxon Concept Transfer Schema.</rdfs:comment>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
+        <owl:versionInfo>Terms used to describe the relationship between taxon concepts. Borrows structure and terms from the TDWG Taxon Concept Transfer Schema.
+
+See: https://github.com/camwebb/dwca-tcs</owl:versionInfo>
     </owl:Ontology>
     
 

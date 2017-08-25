@@ -12,6 +12,12 @@
     dc:issued="2017-08-25"
     dc:relation="http://rs.gbif.org/sandbox/vocabulary/tcs/tcreltypes.xml"
     >
+
+  <!-- Development notes:
+       1. Version 0.1
+       2. See: https://github.com/camwebb/dwca-tcs
+  -->
+
   
   <concept dc:identifier="does_not_include"
            dc:URI="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#does_not_include"

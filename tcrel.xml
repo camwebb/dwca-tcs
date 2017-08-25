@@ -13,11 +13,12 @@
     dc:description="A Darwin Core Archive extension for specifying the relationsips between taxon concepts, based on the 'TaxonRelationshipAssertion' element of the TDWG Taxon Concept Transfer (XML) Schema. Relationship types include Set Theory types (included_in, etc.) and taxonomic parent-child relationships. Taxon Concepts are specified in the DwCA 'Taxon' module, where a record must have: 1. a name (and ideally also a scientificNameID), 2. a nameAccordingTo (and ideally also a nameAccordingToID), and 3. a taxonConceptID. The latter is used as the key for subjectTaxonConceptID and objectTaxonConceptID in this module.">
 
   <!-- Development notes:
-       1. If all the IDs in this module are external URIs,
-          then a valid Archive may not contain a Taxon module.
-       2. taxonConceptRelationshipAccordingToID might possibly be used as
+       1. Version 0.1
+       2. See: https://github.com/camwebb/dwca-tcs
+       3. If all the IDs in this module are external URIs,
+          then a valid Archive might validly not contain a Taxon module.
+       4. taxonConceptRelationshipAccordingToID might possibly be used as
           DwCA interal reference to a publication.
-       3. Please contact Cam Webb (cw at camwebb dot info) with suggestions.
   -->
   
   <property
