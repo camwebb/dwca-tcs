@@ -7,10 +7,14 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#">
-        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.1</owl:versionInfo>
+        <owl:versionInfo rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.2</owl:versionInfo>
         <owl:versionInfo>Terms used to describe the relationship between taxon concepts. Borrows structure and terms from the TDWG Taxon Concept Transfer Schema.
 
-See: https://github.com/camwebb/dwca-tcs</owl:versionInfo>
+See: https://github.com/camwebb/dwca-tcs
+
+Note that the taxon relationships are modeled here as instances of a TaxonConceptRelationshipType. They could also have been modeled as subclasses of TaxonConceptRelationship and the instance of a particular relationship would be and instance these subclasses. This is perhaps a cleaner way to model this information, requiring one less new property. However, this ontology was created to anchor the TaxonConceptRelationship extension in DwCA, and an entity called TaxonConceptRelationshipType was needed to be pointed to in the extensions definition.
+
+For modeling in RDF, there is no need to reify the TaxonConceptRelationship, and this ontology contains properties to directly link two concepts.</owl:versionInfo>
     </owl:Ontology>
     
 
@@ -26,11 +30,51 @@ See: https://github.com/camwebb/dwca-tcs</owl:versionInfo>
     
 
 
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#excludesTaxonConcept -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#excludesTaxonConcept">
+        <rdfs:subPropertyOf rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#includesTaxonConcept -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#includesTaxonConcept">
+        <rdfs:subPropertyOf rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#isCongruentToTaxonConcept -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#isCongruentToTaxonConcept">
+        <rdfs:subPropertyOf rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#isIncludedInTaxonConcept -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#isIncludedInTaxonConcept">
+        <rdfs:subPropertyOf rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#objectTaxonConceptID -->
 
     <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#objectTaxonConceptID">
         <rdfs:domain rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#TaxonConceptRelationship"/>
         <rdfs:range rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#TaxonConcept"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#overlapsTaxonConcept -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#overlapsTaxonConcept">
+        <rdfs:subPropertyOf rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
     </owl:ObjectProperty>
     
 
@@ -41,6 +85,12 @@ See: https://github.com/camwebb/dwca-tcs</owl:versionInfo>
         <rdfs:domain rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#TaxonConceptRelationship"/>
         <rdfs:range rdf:resource="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#TaxonConcept"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty -->
+
+    <owl:ObjectProperty rdf:about="http://rs.gbif.org/sandbox/terms/tcs/tcrel.rdf#taxonConceptRelationshipProperty"/>
     
 
 
